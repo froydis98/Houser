@@ -2,8 +2,6 @@ export interface IArticle {
   title: string;
   description: string;
   status: Status;
-  published: Date;
-  lastEdited: Date;
 }
 
 export enum Status {

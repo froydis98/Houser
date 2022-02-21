@@ -42,8 +42,6 @@ const addArticle = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             title: body.title,
             description: body.description,
             status: body.status,
-            published: body.published,
-            lastEdited: body.lastEdited,
         }).save();
         res.status(201).json({ message: "Article added", article });
     }

@@ -15,14 +15,6 @@ const articleSchema: Schema = new Schema(
       type: Number,
       required: true,
     },
-    published: {
-      type: Date,
-      required: true,
-    },
-    lastEdited: {
-      type: Date,
-      required: true,
-    },
   },
   { timestamps: true }
 );

@@ -27,15 +27,13 @@ const addArticle = async (req: Request, res: Response): Promise<void> => {
   try {
     const body = req.body as Pick<
       IArticle,
-      "title" | "description" | "status" | "published" | "lastEdited"
+      "title" | "description" | "status"
     >;
 
     const article: IArticle = await new Article({
       title: body.title,
       description: body.description,
       status: body.status,
-      published: body.published,
-      lastEdited: body.lastEdited,
     }).save();
 
     res.status(201).json({ message: "Article added", article });

@@ -1,14 +1,17 @@
 <script>
 import { onMount } from 'svelte';
-
-	import Article from './article.svelte'
-	import { Status } from './types'
+	import Article from './components/article.svelte'
+	import Tiptap from './lib/Tiptap.svelte';
+	import { Status } from './types/status'
 	let title = '';
-	let description = ''
+	let description= '';
 	let status = Status.DRAFT;
 	let data = null
+	let jsonDescription = null;
 	function setTitle(event) {
 		title = event.target.value;
+		console.log(title, description)
+		console.log(json)
 	}
 	onMount(async function () {
 		const response = await fetch('http://localhost:4000/articles')
@@ -16,7 +19,6 @@ import { onMount } from 'svelte';
 		console.log(data)
 	})
 	async function postArticle () {
-		console.log(JSON.stringify({title, description}))
 		const res = await fetch('http://localhost:4000/add-article', {
 			method: 'POST',
 			headers: { "Content-Type": "application/json"},
@@ -26,7 +28,6 @@ import { onMount } from 'svelte';
 				status,
 			}),
 		})
-		console.log(res.body)
 		const json = await res.json()
 		result = JSON.stringify(json)
 	}
@@ -38,11 +39,8 @@ import { onMount } from 'svelte';
 			<label for="title">Title</label>
 			<input type="text" id="title" value={title} on:input={setTitle}/>
 		</div>
-		<div>
-			<label for="description">Description</label>
-			<textarea rows="3" id="description" bind:value ={description}/>
-		</div>
+		<Tiptap bind:json={jsonDescription}/>
 	</section>
 	<button on:click={postArticle}>Publish</button>
-	<Article title={title} description={description} status={status}/>
+	<Article title={title} description={jsonDescription} status={status}/>
 </main>
