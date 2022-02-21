@@ -70,7 +70,7 @@ const deleteArticle = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     try {
         const deletedArticle = yield article_1.default.findByIdAndRemove(req.params.id);
         res.status(200).json({
-            message: "Todo deleted",
+            message: "Article deleted",
             article: deletedArticle,
         });
     }

@@ -69,7 +69,7 @@ const deleteArticle = async (req: Request, res: Response): Promise<void> => {
       req.params.id
     );
     res.status(200).json({
-      message: "Todo deleted",
+      message: "Article deleted",
       article: deletedArticle,
     });
   } catch (error) {
