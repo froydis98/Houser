@@ -28,6 +28,7 @@
     "@tiptap/core": "^2.0.0-beta.174",
     "@tiptap/html": "^2.0.0-beta.173",
     "@tiptap/starter-kit": "^2.0.0-beta.183",
-    "sirv-cli": "^2.0.0"
+    "sirv-cli": "^2.0.0",
+    "svelte-navigator": "^3.1.5"
   }
 }

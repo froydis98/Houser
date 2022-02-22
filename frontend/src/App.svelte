@@ -1,31 +1,21 @@
 <script lang="ts">
-import { onMount } from 'svelte';
-	import Article from './components/article.svelte'
-	import Tiptap from './lib/Tiptap.svelte';
-import type { IArticle } from './types/article';
-	import { Status } from './types/status'
-	let article: IArticle = {title: '', description: null, status: Status.DRAFT};
-	function setTitle(event) {
-		article.title = event.target.value;
-	}
-	async function postArticle () {
-		const res = await fetch('http://localhost:4000/add-article', {
-			method: 'POST',
-			headers: { "Content-Type": "application/json"},
-			body: JSON.stringify(article)})
-		const json = await res.json()
-		let result = JSON.stringify(json)
-		console.log(result)
-	}
+	import { Router, Link, Route } from "svelte-navigator";
+	import CreateArticle from "./components/createArticle.svelte";
 </script>
 
-<main>
-	<section>
-		<div> 
-			<label for="title">Title</label>
-			<input type="text" id="title" value={article.title} on:input={setTitle}/>
-		</div>
-		<Tiptap bind:json={article.description}/>
-	</section>
-	<button on:click={postArticle}>Publish</button>
-</main>
+<Router primary={false}>
+	<header>
+	<nav>
+		<Link to="/">Home</Link>
+		<Link to="createArticle">Create new article</Link>
+	</nav>
+</header>
+	<div>
+		<Route path="/">
+			<div>Hi, this is the landing page. This is the next task</div>
+		</Route>
+		<Route path="createArticle">
+			<CreateArticle/>
+		</Route>
+	</div>
+</Router>
