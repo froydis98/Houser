@@ -17,7 +17,6 @@
           // force re-render so `editor.isActive` works as expected
           editor = editor
           json = editor.getJSON()
-          console.log(json)
         },
       })
     })

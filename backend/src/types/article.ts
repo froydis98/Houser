@@ -1,6 +1,6 @@
 export interface IArticle {
   title: string;
-  description: string;
+  description: JSON;
   status: Status;
 }
 

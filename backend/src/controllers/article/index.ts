@@ -29,6 +29,7 @@ const addArticle = async (req: Request, res: Response): Promise<void> => {
       IArticle,
       "title" | "description" | "status"
     >;
+    console.log("mottatt: ", body.description)
 
     const article: IArticle = await new Article({
       title: body.title,

@@ -38,6 +38,7 @@ exports.getArticleById = getArticleById;
 const addArticle = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const body = req.body;
+        console.log("mottatt: ", body.description);
         const article = yield new article_1.default({
             title: body.title,
             description: body.description,

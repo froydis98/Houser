@@ -8,7 +8,7 @@ const articleSchema: Schema = new Schema(
       required: true,
     },
     description: {
-      type: String,
+      type: JSON,
       required: true,
     },
     status: {

@@ -7,7 +7,7 @@ const articleSchema = new mongoose_1.Schema({
         required: true,
     },
     description: {
-        type: String,
+        type: JSON,
         required: true,
     },
     status: {
