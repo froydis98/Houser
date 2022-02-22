@@ -1,27 +1,17 @@
 <script lang="ts">
-    import { Status } from '../types/status';
-    import { generateHTML } from '@tiptap/core'
-    import Document from '@tiptap/extension-document'
-    import Paragraph from '@tiptap/extension-paragraph'
-    import Text from '@tiptap/extension-text'
-    import Bold from '@tiptap/extension-bold'
     import { onMount } from 'svelte';
-	export let title: string;
-	export let status: Status;
-    export let description: JSON;
-    let descriptionHTML = null;
-    (() => {
-        console.log(descriptionHTML, description)
-        descriptionHTML = {
-            output() {
-                generateHTML(description, [Document, Paragraph, Text, Bold])
-        }}
-    })
+    import type { IArticle } from '../types/article';
+    let article: IArticle
+	onMount(async function () {
+		const response = await fetch('http://localhost:4000/articles')
+		article = await response.json()
+		console.log(article)
+	})
 </script>
 
 <div>
-    <h2> {title} </h2>
-    <p> {descriptionHTML}</p>
-    <p> {status}</p>
+    <h2> {article.title} </h2>
+    <p> {JSON.stringify(article.description)}</p>
+    <p> {article.status}</p>
 </div>
 
