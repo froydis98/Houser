@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Router, Link, Route } from "svelte-navigator";
-	import CreateArticle from "./components/createArticle.svelte";
+	import CreateArticle from "./pages/CreateArticle.svelte";
+	import Home from "./pages/Home.svelte";
 </script>
 
 <Router primary={false}>
@@ -12,7 +13,7 @@
 </header>
 	<div>
 		<Route path="/">
-			<div>Hi, this is the landing page. This is the next task</div>
+			<Home/>
 		</Route>
 		<Route path="createArticle">
 			<CreateArticle/>
